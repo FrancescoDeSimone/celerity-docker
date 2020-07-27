@@ -14,7 +14,7 @@ ENV PATH=/usr/local/cuda/bin:$PATH
 ENV LIBRARY_PATH=/usr/local/cuda/lib64:$LIBRARY_PATH
 
 RUN apt-get update && \
-      apt-get install -f -y neovim exuberant-ctags git curl cmake libboost-all-dev python3 llvm-10 llvm-10-dev clang-10 libclang-10-dev \
+      apt-get install -f -y vim exuberant-ctags git curl cmake libboost-all-dev python3 llvm-10 llvm-10-dev clang-10 libclang-10-dev \
       libllvm10 libomp-10-dev llvm-10-runtime clang-tools-10 libclang-common-10-dev libclang1-10 libomp-10-dev && rm -rf /var/lib/apt/lists/*
 WORKDIR /tmp
 RUN git clone -b $hipsycl_branch --recurse-submodules $hipsycl_origin && cd hipSYCL && git reset --hard $hipsycl_commit && git clean -f && git submodule update --recursive && mkdir /tmp/build
